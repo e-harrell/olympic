@@ -12,5 +12,8 @@ i=0
 
 df = pd.read_html(StringIO(str(tables[1])))
 print(df)
-print(type(df))
-print(len(df))
+#print(type(df))
+#print(len(df))
+#print(type(df[0]))
+#df1 = df[0]
+#print(type(df1))

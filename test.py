@@ -1,6 +1,16 @@
-import wikipedia
+import requests 
+import pandas as pd
+from bs4 import BeautifulSoup
+from io import StringIO
 
-article_title = "Python (programming language)"
-article_page = wikipedia.page(article_title)
-# Now you can access various attributes of the page, such as content, summary, etc.
-print(article_page.section)
+#url = StringIO("https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table")
+url = "https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, "html.parser")
+tables = soup.find_all("table")
+i=0
+
+df = pd.read_html(StringIO(str(tables[1])))
+print(df)
+print(type(df))
+
